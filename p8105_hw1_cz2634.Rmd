@@ -41,6 +41,48 @@ as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
 
+```{r}
+as.numeric(pull(prob1_df, samp_gt_0))*pull(prob1_df, samp)
+```
+
 
 ## problem 2
+#### 1. A short description of the penguins dataset 
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+* The data in this dataset, including `r names(penguins)`.
+  * The species are `r levels(pull(penguins, species))`
+  * The island are `r levels(pull(penguins, island))`
+  * The bill length range is `r range(pull(penguins, bill_length_mm), na.rm = TRUE )`
+  * The bill depth range is `r range(pull(penguins, bill_depth_mm), na.rm = TRUE )`
+  * The flipper length range is `r range(pull(penguins, flipper_length_mm), na.rm = TRUE )`
+  * The body mass range is `r range(pull(penguins, body_mass_g), na.rm = TRUE )`
+  * The sex contains `r levels(pull(penguins, sex))`
+  * The year range is `r range(pull(penguins, year), na.rm = TRUE )`
+
+* The size of the dataset is `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
+* The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`
+
+
+#### 2. Scatterplot of flipper_length vs. bill_length
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+
+```{r}
+ggsave("scatter_plot.png", height = 5, width = 5)
+```
+
+
+
+
+
+
+
 
